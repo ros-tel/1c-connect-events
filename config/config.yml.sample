@@ -1,0 +1,26 @@
+# Логин в 1С-Connect (см. заголовок окна программы)
+agent_login: 271914
+
+# Тип CRM
+crm_type: amocrm
+
+crms:
+    amocrm:
+        # Ваш аккаунт - поддомен
+        base_url: https://mycompany.amocrm.ru
+        # Откуда тянем записи
+        record_url: https://192.168.0.80/monitor
+        # Путь к записям
+        record_path: /var/spool/asterisk/monitor
+        # Логин пользователя. В качестве логина в системе используется e-mail
+        login: sovsem@pisem.net
+        # Ключ пользователя, который можно получить на странице редактирования профиля пользователя
+        api_key: z2Ks2rMSOVoFZV3l8gbgdVwoVADntScngwCbXFlG
+        # Создавать контакт
+        create_contact: true
+        # Создавать сделку (должно быть активно создание контакта)
+        create_lead: true
+        # Соответствие внутреннего номера и идентификатора пользователя в AmoCRM
+        number_to_user:
+            2efcf36d-157c-4ac1-b6ef-4dc7ca937ec2: 2374623
+            00e1f8d7-ad57-46bd-9da3-1032dca86fc2: 4379348
