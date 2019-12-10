@@ -58,7 +58,7 @@ func SendEvent(e *pipe.Event) {
 	}
 }
 
-// Собираем логи о звонках
+// Отправляем в AMI
 func processCalls(api *ami.Socket) {
 	var err error
 	for {
