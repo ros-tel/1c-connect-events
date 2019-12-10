@@ -34,5 +34,6 @@ crms:
             # для событий смены статусов поля в составе ключа Mode.Object.Initiator.Status
             "ServicesClients.AgentOnlineStatus.Self.Online": "Action: DBDel\r\nFamily: CFB\r\nKey: 405\r\n\r\n"
             "ServicesClients.AgentOnlineStatus.Self.Away": "Action: DBPut\r\nFamily: CFB\r\nKey: 405\r\nVal: 89876543210\r\n\r\n"
+            "ServicesClients.AgentOnlineStatus.Self.Talking": "Action: DBPut\r\nFamily: CFB\r\nKey: 405\r\nVal: 89876543210\r\n\r\n"
             "ServicesClients.AgentOnlineStatus.Self.BusyForNewRequests": "Action: DBPut\r\nFamily: CFB\r\nKey: 405\r\nVal: 89876543210\r\n\r\n"
             "ServicesClients.AgentOnlineStatus.Self.DoNotDisturb": "Action: DBPut\r\nFamily: CFB\r\nKey: 405\r\nVal: 89876543210\r\n\r\n"
