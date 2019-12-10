@@ -24,3 +24,15 @@ crms:
         number_to_user:
             2efcf36d-157c-4ac1-b6ef-4dc7ca937ec2: 2374623
             00e1f8d7-ad57-46bd-9da3-1032dca86fc2: 4379348
+    asteriskami:
+        addr: 192.168.100.96:5038
+        password: admin
+        user: admin
+        # Карта событий и команд по ним
+        events:
+            # Cобытие: отправляемая команда в AMI
+            # для событий смены статусов поля в составе ключа Mode.Object.Initiator.Status
+            "ServicesClients.AgentOnlineStatus.Self.Online": "Action: DBDel\r\nFamily: CFB\r\nKey: 405\r\n\r\n"
+            "ServicesClients.AgentOnlineStatus.Self.Away": "Action: DBPut\r\nFamily: CFB\r\nKey: 405\r\nVal: 89876543210\r\n\r\n"
+            "ServicesClients.AgentOnlineStatus.Self.BusyForNewRequests": "Action: DBPut\r\nFamily: CFB\r\nKey: 405\r\nVal: 89876543210\r\n\r\n"
+            "ServicesClients.AgentOnlineStatus.Self.DoNotDisturb": "Action: DBPut\r\nFamily: CFB\r\nKey: 405\r\nVal: 89876543210\r\n\r\n"

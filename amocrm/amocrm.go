@@ -88,6 +88,9 @@ func Start(c AmoCRM, d *bool) {
 
 // Получение события и постановка в очереди
 func SendEvent(e *pipe.Event) {
+	if e.Object != "Call" {
+		return
+	}
 	if e.State == "Started" {
 		// Первое событие о звонке
 		event := amoCrmEventAdd{Type: "phone_call"}

@@ -8,9 +8,10 @@ import (
 	"os"
 
 	"1c-connect-events/amocrm"
+	"1c-connect-events/asteriskami"
 
 	"github.com/ros-tel/1c-connect-pipe"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 type (
@@ -19,7 +20,8 @@ type (
 		CrmType    string `yaml:"crm_type"`
 
 		CRMs struct {
-			AmoCRM amocrm.AmoCRM `yaml:"amocrm"`
+			AmoCRM amocrm.AmoCRM   `yaml:"amocrm"`
+			Ami    asteriskami.Ami `yaml:"asteriskami"`
 		} `yaml:"crms"`
 	}
 )
@@ -46,6 +48,8 @@ func main() {
 	switch config.CrmType {
 	case "amocrm":
 		amocrm.Start(config.CRMs.AmoCRM, debug)
+	case "asteriskami":
+		asteriskami.Start(config.CRMs.Ami, debug)
 	default:
 		log.Fatal("Unsupported CRM: " + config.CrmType)
 	}
@@ -70,6 +74,13 @@ func main() {
 		Object:    "Call",
 		Initiator: "Self",
 	})
+	// ... смена своего статуса
+	pipe_client.SendCommand(pipe.Command{
+		Action:    "EventSubscribe",
+		Mode:      "ServicesClients",
+		Object:    "AgentOnlineStatus",
+		Initiator: "Self",
+	})
 	/*
 	 *  /\ Подписались на события софтфона /\
 	 */
@@ -82,11 +93,11 @@ func main() {
 				if *debug {
 					log.Printf("Event received %+v", e)
 				}
-				if e.Mode == "Softphone" && e.Object == "Call" {
-					switch config.CrmType {
-					case "amocrm":
-						amocrm.SendEvent(e)
-					}
+				switch config.CrmType {
+				case "amocrm":
+					amocrm.SendEvent(e)
+				case "asteriskami":
+					asteriskami.SendEvent(e)
 				}
 			case r := <-pipe_client.Result:
 				if *debug {
