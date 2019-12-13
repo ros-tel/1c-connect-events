@@ -11,7 +11,7 @@ import (
 	"1c-connect-events/asteriskami"
 
 	"github.com/ros-tel/1c-connect-pipe"
-	"gopkg.in/yaml.v3"
+	"gopkg.in/yaml.v2"
 )
 
 type (
